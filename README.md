@@ -1,3 +1,18 @@
+## Fork Notice
+
+This repository is a fork of [intel-hadoop/HiBench](https://github.com/intel-hadoop/HiBench) (archived).
+
+### What's Added
+Added Flink batch execution support for workloads that were previously streaming-only:
+
+- **Graph**: nweight, pagerank
+- **Micro**: dfsioe, repartition, sleep, sort, terasort, wordcount
+- **ML**: als, bayes, correlation, gbt, gmm, kmeans, lda, linear, lr, pca, rf, summarizer, svd, svm, xgboost
+- **SQL**: aggregation, join, scan
+- **WebSearch**: nutchindexing, pagerank
+
+---
+
 # THIS PROJECT IS ARCHIVED  
 Intel will not provide or guarantee development of or support for this project, including but not limited to, maintenance, bug fixes, new releases or updates.  
 Patches to this project are no longer accepted by Intel.   
