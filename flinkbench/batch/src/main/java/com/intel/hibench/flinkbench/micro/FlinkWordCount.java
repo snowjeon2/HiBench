@@ -52,6 +52,6 @@ public class FlinkWordCount {
             .sum(1);
 
         counts.writeAsCsv(outputPath, "\n", " ");
-        env.execute("Flink WordCount");
+        env.execute("WordCount");
     }
 }

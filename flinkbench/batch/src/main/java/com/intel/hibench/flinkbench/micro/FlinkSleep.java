@@ -51,6 +51,6 @@ public class FlinkSleep {
             })
             .output(new org.apache.flink.api.java.io.DiscardingOutputFormat<>());
 
-        env.execute("Flink Sleep");
+        env.execute("Sleep");
     }
 }

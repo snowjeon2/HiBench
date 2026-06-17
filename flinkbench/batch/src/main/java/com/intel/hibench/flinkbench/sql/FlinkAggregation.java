@@ -62,6 +62,6 @@ public class FlinkAggregation {
                 .sum(1);
 
         sourceRevenue.writeAsCsv(outputPath, "\n", ",");
-        env.execute("Flink SQL Aggregation");
+        env.execute("Aggregation");
     }
 }

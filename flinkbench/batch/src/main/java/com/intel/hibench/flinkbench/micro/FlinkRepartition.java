@@ -66,6 +66,6 @@ public class FlinkRepartition {
             repartitioned.output(new org.apache.flink.api.java.io.DiscardingOutputFormat<>());
         }
 
-        env.execute("Flink Repartition");
+        env.execute("Repartition");
     }
 }

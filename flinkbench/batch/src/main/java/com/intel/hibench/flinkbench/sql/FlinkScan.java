@@ -45,6 +45,6 @@ public class FlinkScan {
                 .filter(line -> !line.isEmpty() && !line.startsWith("#"));
 
         records.writeAsText(outputPath);
-        env.execute("Flink SQL Scan");
+        env.execute("Scan");
     }
 }

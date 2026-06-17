@@ -144,6 +144,6 @@ public class FlinkJoin {
                 });
 
         aggregated.writeAsCsv(outputPath, "\n", ",");
-        env.execute("Flink SQL Join");
+        env.execute("Join");
     }
 }

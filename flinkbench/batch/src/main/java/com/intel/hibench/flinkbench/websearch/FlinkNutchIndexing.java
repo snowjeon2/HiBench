@@ -97,6 +97,6 @@ public class FlinkNutchIndexing {
             });
 
         invertedIndex.writeAsCsv(outputPath, "\n", "\t");
-        env.execute("Flink NutchIndexing");
+        env.execute("NutchIndexing");
     }
 }

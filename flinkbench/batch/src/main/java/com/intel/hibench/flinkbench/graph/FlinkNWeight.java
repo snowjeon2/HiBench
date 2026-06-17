@@ -139,6 +139,6 @@ public class FlinkNWeight {
         DataSet<Tuple2<Long, Double>> finalWeights = loop.closeWith(newWeights);
 
         finalWeights.writeAsCsv(outputPath, "\n", " ");
-        env.execute("Flink NWeight");
+        env.execute("NWeight");
     }
 }

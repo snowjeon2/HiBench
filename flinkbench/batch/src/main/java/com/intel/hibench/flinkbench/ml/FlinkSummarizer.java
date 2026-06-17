@@ -132,6 +132,6 @@ public class FlinkSummarizer {
 
         // Write summary statistics to HDFS
         summary.writeAsText(outputPath);
-        env.execute("Flink Summarizer");
+        env.execute("Summarizer");
     }
 }

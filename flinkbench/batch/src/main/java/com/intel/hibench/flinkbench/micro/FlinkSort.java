@@ -48,6 +48,6 @@ public class FlinkSort {
               .returns(org.apache.flink.api.common.typeinfo.BasicTypeInfo.STRING_TYPE_INFO)
               .writeAsText(outputPath);
 
-        env.execute("Flink Sort");
+        env.execute("Sort");
     }
 }

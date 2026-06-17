@@ -55,6 +55,6 @@ public class FlinkTeraSort {
 
         sorted.output(new TeraRecordOutputFormat(outputPath));
 
-        env.execute("Flink TeraSort");
+        env.execute("TeraSort");
     }
 }

@@ -118,6 +118,6 @@ public class FlinkPageRank {
         DataSet<Tuple2<Long, Double>> finalRanks = iteration.closeWith(newRanks);
 
         finalRanks.writeAsCsv(outputPath, "\n", " ");
-        env.execute("Flink PageRank");
+        env.execute("PageRank");
     }
 }
