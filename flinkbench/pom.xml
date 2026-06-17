@@ -29,9 +29,17 @@
     </profile>
 
     <profile>
+      <id>batch</id>
+      <modules>
+        <module>batch</module>
+      </modules>
+    </profile>
+
+    <profile>
       <id>allModules</id>
       <modules>
         <module>streaming</module>
+        <module>batch</module>
       </modules>
       <activation>
         <property>
