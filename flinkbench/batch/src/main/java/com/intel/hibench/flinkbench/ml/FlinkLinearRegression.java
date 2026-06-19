@@ -118,7 +118,7 @@ public class FlinkLinearRegression {
                     }
                 });
 
-        List<Double> sumList = squaredErrorSum.collect();
+        List<Double> sumList = FlinkJobUtils.collect(squaredErrorSum, env, "LinearRegression");
         double rmse = sumList.isEmpty() ? 0.0 : Math.sqrt(sumList.get(0) / numExamples);
         System.out.println("Linear Regression final RMSE: " + String.format("%.4f", rmse));
         writeResult(outputPath, "LinearRegression RMSE=" + String.format("%.4f", rmse) + "\n");

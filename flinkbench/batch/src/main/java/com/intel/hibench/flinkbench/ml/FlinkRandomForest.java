@@ -99,7 +99,8 @@ public class FlinkRandomForest {
                 });
 
         // Collect all data to driver for tree building
-        final List<Tuple2<double[], Integer>> allData = data.collect();
+        final List<Tuple2<double[], Integer>> allData =
+                FlinkJobUtils.collect(data, env, "RandomForest (load data)");
 
         // Build num_trees trees in parallel using generateSequence
         DataSet<TreeNode> trees = env.generateSequence(0, numTrees - 1)
@@ -225,7 +226,7 @@ public class FlinkRandomForest {
                     }
                 });
 
-        List<double[]> accList = accuracy.collect();
+        List<double[]> accList = FlinkJobUtils.collect(accuracy, env, "RandomForest");
         double acc = accList.isEmpty() ? 0.0 : accList.get(0)[0] / accList.get(0)[1];
         System.out.println("Random Forest ensemble accuracy: " + String.format("%.4f", acc));
         writeResult(outputPath, "RandomForest accuracy=" + String.format("%.4f", acc) + "\n");

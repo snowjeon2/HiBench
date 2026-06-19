@@ -110,7 +110,7 @@ public class FlinkKMeans {
 
         DataSet<Tuple2<Integer, double[]>> finalCentroids = loop.closeWith(newCentroids);
 
-        List<Tuple2<Integer, double[]>> finalList = finalCentroids.collect();
+        List<Tuple2<Integer, double[]>> finalList = FlinkJobUtils.collect(finalCentroids, env, "KMeans");
         StringBuilder sb = new StringBuilder();
         for (Tuple2<Integer, double[]> c : finalList) {
             sb.append("centroid=").append(c.f0).append(" mean=[");

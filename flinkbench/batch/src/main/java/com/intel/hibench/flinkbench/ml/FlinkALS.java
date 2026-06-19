@@ -152,7 +152,7 @@ public class FlinkALS {
                     }
                 });
 
-        List<Double> rmseList = rmseDs.collect();
+        List<Double> rmseList = FlinkJobUtils.collect(rmseDs, env, "ALS");
         double rmse = rmseList.isEmpty() ? 0.0 : Math.sqrt(rmseList.get(0) / numRatingsL);
         System.out.println("ALS training complete. RMSE = " + String.format("%.4f", rmse));
         writeResult(outputPath, "ALS RMSE=" + String.format("%.4f", rmse) + "\n");

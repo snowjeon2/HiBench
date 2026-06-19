@@ -150,7 +150,7 @@ public class FlinkLogisticRegression {
                     }
                 });
 
-        List<double[]> accList = accuracy.collect();
+        List<double[]> accList = FlinkJobUtils.collect(accuracy, env, "LogisticRegression");
         double acc = accList.isEmpty() ? 0.0 : accList.get(0)[0] / accList.get(0)[1];
         System.out.println("Logistic Regression training accuracy: " + String.format("%.4f", acc));
         writeResult(outputPath, "LogisticRegression accuracy=" + String.format("%.4f", acc) + "\n");

@@ -83,7 +83,7 @@ public class FlinkXGBoost {
                     }
                 });
 
-        final List<Tuple2<double[], Integer>> allData = data.collect();
+        final List<Tuple2<double[], Integer>> allData = FlinkJobUtils.collect(data, env, "XGBoost");
         int n = allData.size();
 
         // Initialise predictions with mean label

@@ -188,7 +188,8 @@ public class FlinkLDA {
         DataSet<Tuple3<Integer, Integer, Double>> result = loop.closeWith(newCounts);
 
         // Print a summary (triggers execution)
-        List<Tuple3<Integer, Integer, Double>> top = result.first(numTopics * 3).collect();
+        List<Tuple3<Integer, Integer, Double>> top =
+                FlinkJobUtils.collect(result.first(numTopics * 3), env, "LDA");
         System.out.println("LDA complete (" + maxIter + " iterations). Sample topic-word counts:");
         for (Tuple3<Integer, Integer, Double> t : top) {
             System.out.printf("  topic=%d word=%d count=%.2f%n", t.f0, t.f1, t.f2);

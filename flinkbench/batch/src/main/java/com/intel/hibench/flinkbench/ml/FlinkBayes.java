@@ -134,7 +134,7 @@ public class FlinkBayes {
                     }
                 });
 
-        long totalTrain = trainData.count();
+        long totalTrain = FlinkJobUtils.count(trainData, env, "NaiveBayes (train count)");
 
         // Classify test examples using broadcast model
         DataSet<Tuple2<Double, Double>> predictions = testData
@@ -156,8 +156,8 @@ public class FlinkBayes {
                     public Double reduce(Double a, Double b) { return a + b; }
                 });
 
-        long testCount = testData.count();
-        List<Double> correctList = correctCount.collect();
+        long testCount = FlinkJobUtils.count(testData, env, "NaiveBayes (test count)");
+        List<Double> correctList = FlinkJobUtils.collect(correctCount, env, "NaiveBayes");
         double accuracy = testCount == 0 ? 0.0 : correctList.get(0) / testCount;
         System.out.println("Naive Bayes accuracy: " + String.format("%.4f", accuracy)
                 + " (trained on " + totalTrain + " examples)");

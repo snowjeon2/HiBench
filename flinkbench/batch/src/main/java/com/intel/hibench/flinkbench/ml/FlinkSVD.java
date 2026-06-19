@@ -92,7 +92,7 @@ public class FlinkSVD {
                     }
                 });
 
-        List<double[]> gramList = gramAcc.collect();
+        List<double[]> gramList = FlinkJobUtils.collect(gramAcc, env, "SVD");
         double[] gramFlat = gramList.get(0);
 
         // Reconstruct symmetric Gram matrix

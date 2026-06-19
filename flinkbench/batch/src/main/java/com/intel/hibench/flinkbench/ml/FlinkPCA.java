@@ -96,7 +96,7 @@ public class FlinkPCA {
                     }
                 });
 
-        List<double[]> statsList = statsAcc.collect();
+        List<double[]> statsList = FlinkJobUtils.collect(statsAcc, env, "PCA");
         double[] s = statsList.get(0);
         long n = (long) s[accLen - 1];
 

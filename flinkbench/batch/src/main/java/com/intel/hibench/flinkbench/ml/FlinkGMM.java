@@ -81,11 +81,12 @@ public class FlinkGMM {
             });
 
         // Initialise: pick first k points as means, equal weights, unit variance
-        List<double[]> seeds = DataSetUtils.zipWithIndex(points.first(k))
+        DataSet<double[]> seedDataset = DataSetUtils.zipWithIndex(points.first(k))
             .map(new MapFunction<Tuple2<Long, double[]>, double[]>() {
                 @Override
                 public double[] map(Tuple2<Long, double[]> t) { return t.f1; }
-            }).collect();
+            });
+        List<double[]> seeds = FlinkJobUtils.collect(seedDataset, env, "GMM (init)");
 
         List<GaussianComponent> initComponents = new ArrayList<>();
         for (int i = 0; i < seeds.size(); i++) {
@@ -126,7 +127,7 @@ public class FlinkGMM {
 
         DataSet<GaussianComponent> finalComponents = loop.closeWith(newComponents);
 
-        List<GaussianComponent> finalList = finalComponents.collect();
+        List<GaussianComponent> finalList = FlinkJobUtils.collect(finalComponents, env, "GMM");
         StringBuilder sb = new StringBuilder();
         for (GaussianComponent c : finalList) {
             sb.append("component=").append(c.id)

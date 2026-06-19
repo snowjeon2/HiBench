@@ -250,6 +250,10 @@ HiBenchEnvPropMapping=dict(
     STREAMBENCH_FLINK_JAR="hibench.streambench.flinkbench.jar",
     STREAMBENCH_FLINK_PARALLELISM="hibench.streambench.flink.parallelism",
 
+    # flinkbatch
+    FLINKBENCH_BATCH_JAR="hibench.flinkbench.batch.jar",
+    FLINK_PARALLELISM="hibench.flink.parallelism",
+
     )
 
 HiBenchPropEnvMapping=dict([(v,k) for k, v in HiBenchEnvPropMapping.items()])

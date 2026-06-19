@@ -95,7 +95,7 @@ public class FlinkCorrelation {
                     }
                 });
 
-        List<double[]> statsList = statsAcc.collect();
+        List<double[]> statsList = FlinkJobUtils.collect(statsAcc, env, "Correlation (stats)");
         double[] statsResult = statsList.get(0);
         long n = (long) statsResult[numFeatures * 2];
         double[] means     = new double[numFeatures];
@@ -135,7 +135,7 @@ public class FlinkCorrelation {
                     }
                 });
 
-        List<double[]> covList = covAcc.collect();
+        List<double[]> covList = FlinkJobUtils.collect(covAcc, env, "Correlation");
         double[] covFlat = covList.get(0);
 
         // Build K×K correlation block

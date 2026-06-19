@@ -151,7 +151,7 @@ public class FlinkSVM {
                     }
                 });
 
-        List<double[]> accList = accuracy.collect();
+        List<double[]> accList = FlinkJobUtils.collect(accuracy, env, "SVM");
         double acc = accList.isEmpty() ? 0.0 : accList.get(0)[0] / accList.get(0)[1];
         System.out.println("SVM training accuracy: " + String.format("%.4f", acc));
         writeResult(outputPath, "SVM accuracy=" + String.format("%.4f", acc) + "\n");

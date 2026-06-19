@@ -88,7 +88,7 @@ public class FlinkGBT {
                     }
                 });
 
-        final List<Tuple2<double[], Integer>> allData = data.collect();
+        final List<Tuple2<double[], Integer>> allData = FlinkJobUtils.collect(data, env, "GBT");
         int n = allData.size();
 
         // Initialise predictions with base value (mean label for regression, 0.5 for binary)
